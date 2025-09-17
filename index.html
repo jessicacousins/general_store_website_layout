@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maple Street General Store - Your Neighborhood Convenience</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #1a3d36;
+        --secondary-color: #d8b87d;
+        --accent-color: #97bc62;
+        --light-color: #f8f5f0;
+        --dark-color: #333;
+        --text-color: #333;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--light-color);
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--box-shadow);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      .logo i {
+        margin-right: 10px;
+        color: var(--secondary-color);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+        position: relative;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        padding: 5px 0;
+        display: inline-block;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary-color);
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Menu */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 200px;
+        box-shadow: var(--box-shadow);
+        z-index: 1001;
+        border-radius: var(--border-radius);
+        top: 100%;
+        left: 0;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: var(--transition);
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .dropdown-content a {
+        color: var(--primary-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .dropdown-content a:hover {
+        background-color: var(--light-color);
+        color: var(--accent-color);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+            rgba(26, 61, 54, 0.85),
+            rgba(26, 61, 54, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+            no-repeat center center/cover;
+        color: white;
+        text-align: center;
+        padding: 6rem 1rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==");
+        opacity: 0.1;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto 2.5rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease 0.2s;
+        animation-fill-mode: both;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        padding: 14px 28px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease 0.4s;
+        animation-fill-mode: both;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        background-color: #e2c28f;
+      }
+
+      /* Store Info Section */
+      .store-info {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 3rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .store-info::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-color),
+          var(--secondary-color)
+        );
+      }
+
+      .info-item {
+        flex: 1;
+        min-width: 200px;
+        margin: 15px;
+        padding: 15px;
+        transition: var(--transition);
+        border-radius: var(--border-radius);
+      }
+
+      .info-item:hover {
+        background-color: rgba(151, 188, 98, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .info-item i {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        transition: var(--transition);
+      }
+
+      .info-item:hover i {
+        color: var(--accent-color);
+        transform: scale(1.1);
+      }
+
+      .info-item h3 {
+        margin-bottom: 8px;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+      }
+
+      /* Specials Section */
+      .specials {
+        background: linear-gradient(135deg, var(--accent-color), #7da640);
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 3rem;
+        text-align: center;
+        box-shadow: var(--box-shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .specials::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+      }
+
+      .specials h2 {
+        color: white;
+        margin-bottom: 1.5rem;
+        font-size: 2.2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .specials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .special-item {
+        background-color: white;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .special-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .special-item .product-name {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+      }
+
+      .special-item .product-price {
+        text-decoration: line-through;
+        color: #999;
+        margin-right: 10px;
+      }
+
+      .special-price {
+        color: #e74c3c;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      /* Product Sections */
+      .section {
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-color),
+          var(--secondary-color)
+        );
+        border-radius: 2px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-image {
+        height: 200px;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        color: var(--primary-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 61, 54, 0.05),
+          rgba(151, 188, 98, 0.1)
+        );
+      }
+
+      .product-info {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-name {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+      }
+
+      .product-description {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 15px;
+        flex-grow: 1;
+      }
+
+      .product-price {
+        font-weight: bold;
+        color: var(--accent-color);
+        font-size: 1.3rem;
+        align-self: flex-end;
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        z-index: 1;
+      }
+
+      /* Load More Button */
+      .load-more-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .load-more-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .load-more-btn:hover {
+        background-color: #0f2823;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .load-more-btn.loading {
+        background-color: var(--accent-color);
+        pointer-events: none;
+      }
+
+      .load-more-btn.loading::after {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: auto;
+        animation: fadeIn 0.3s;
+      }
+
+      .modal-content {
+        background-color: white;
+        margin: 5% auto;
+        padding: 0;
+        border-radius: var(--border-radius);
+        width: 90%;
+        max-width: 800px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: slideIn 0.4s;
+        overflow: hidden;
+      }
+
+      .modal-header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 20px;
+        position: relative;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.8rem;
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .close:hover {
+        color: var(--secondary-color);
+        transform: rotate(90deg);
+      }
+
+      .modal-body {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .modal-image {
+        flex: 1;
+        min-width: 300px;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        font-size: 5rem;
+        color: var(--primary-color);
+      }
+
+      .modal-details {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-description {
+        margin-bottom: 20px;
+        color: #555;
+        line-height: 1.7;
+      }
+
+      .modal-price {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 25px;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: auto;
+      }
+
+      .modal-btn {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #0f2823;
+      }
+
+      .btn-secondary {
+        background-color: #f0f0f0;
+        color: var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: #e0e0e0;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 3rem 0 1rem;
+        margin-top: 4rem;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-color),
+          var(--secondary-color)
+        );
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 15px;
+        color: var(--secondary-color);
+        font-size: 1.3rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--secondary-color);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-section ul li a {
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+        display: inline-block;
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--secondary-color);
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 0.9rem;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        nav ul {
+          margin-top: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        nav ul li {
+          margin: 5px 10px;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .modal-body {
+          flex-direction: column;
+        }
+
+        .modal-image {
+          min-height: 200px;
+        }
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-toggle {
+          display: block;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: var(--primary-color);
+          position: absolute;
+          top: 100%;
+          left: 0;
+          padding: 15px 0;
+          box-shadow: var(--box-shadow);
+        }
+
+        nav ul.active {
+          display: flex;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+
+        .dropdown-content {
+          position: static;
+          display: none;
+          box-shadow: none;
+          background-color: rgba(255, 255, 255, 0.1);
+          width: 100%;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: none;
+        }
+
+        .dropdown.active .dropdown-content {
+          display: block;
+        }
+      }
+
+      /* Notification Toast */
+      .notification {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 15px 25px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        z-index: 3000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+      }
+
+      .notification.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .notification i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <i class="fas fa-store"></i>
+          <span>Maple Street General Store</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <ul id="mainNav">
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+              <a href="#products" class="dropbtn"
+                >Products <i class="fas fa-caret-down"></i
+              ></a>
+              <div class="dropdown-content">
+                <a href="#snacks">Snacks & Candy</a>
+                <a href="#beverages">Beverages</a>
+                <a href="#beer-wine">Beer & Wine</a>
+                <a href="#dairy">Dairy & Refrigerated</a>
+                <a href="#fresh">Fresh & Local</a>
+                <a href="#household">Household Essentials</a>
+                <a href="#seasonal">Seasonal Items</a>
+              </div>
+            </li>
+            <li><a href="#specials">Specials</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>Welcome to Maple Street General Store</h1>
+        <p>
+          Your family-friendly neighborhood convenience store since 1985. We
+          offer a wide variety of quality products at fair prices, with a warm
+          smile and hometown service.
+        </p>
+        <a href="#products" class="cta-button">Shop Our Products</a>
+      </div>
+    </section>
+
+    <!-- Store Info -->
+    <div class="container">
+      <div class="store-info">
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <h3>Hours</h3>
+          <p>Mon-Fri: 6am - 10pm<br />Sat-Sun: 7am - 11pm</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Location</h3>
+          <p>123 Maple Street<br />Burlington, VT 05401</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <h3>Contact</h3>
+          <p>(802) 555-0123<br />maplestore@example.com</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Specials Section -->
+    <div class="container">
+      <div class="specials" id="specials">
+        <h2>Weekly Specials</h2>
+        <div class="specials-grid">
+          <div class="special-item">
+            <div class="product-name">Vermont Cheddar Cheese</div>
+            <div class="product-price">$5.99</div>
+            <span class="special-price">$4.49</span>
+          </div>
+          <div class="special-item">
+            <div class="product-name">Local Maple Syrup</div>
+            <div class="product-price">$12.99</div>
+            <span class="special-price">$9.99</span>
+          </div>
+          <div class="special-item">
+            <div class="product-name">Heady Topper 6-Pack</div>
+            <div class="product-price">$14.99</div>
+            <span class="special-price">$12.99</span>
+          </div>
+          <div class="special-item">
+            <div class="product-name">Fresh Apple Cider</div>
+            <div class="product-price">$4.99</div>
+            <span class="special-price">$3.49</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="container" id="products">
+      <!-- Snacks & Candy -->
+      <section class="section" id="snacks">
+        <h2 class="section-title">Snacks & Candy</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="1">
+            <div class="product-badge">Local Favorite</div>
+            <div class="product-image">
+              <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Maple Cookies</div>
+              <div class="product-description">
+                Locally made cookies with real maple syrup
+              </div>
+              <div class="product-price">$3.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="2">
+            <div class="product-image">
+              <i class="fas fa-candy-cane"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Maple Candy</div>
+              <div class="product-description">
+                Pure Vermont maple syrup candy
+              </div>
+              <div class="product-price">$5.49</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="3">
+            <div class="product-badge">Organic</div>
+            <div class="product-image">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Organic Trail Mix</div>
+              <div class="product-description">
+                Nuts, seeds, and dried fruits
+              </div>
+              <div class="product-price">$4.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="4">
+            <div class="product-badge">Bestseller</div>
+            <div class="product-image">
+              <i class="fas fa-ice-cream"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Ben & Jerry's Ice Cream</div>
+              <div class="product-description">
+                Local favorite ice cream pints
+              </div>
+              <div class="product-price">$5.99</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="snacks">
+            Load More Products
+          </button>
+        </div>
+      </section>
+
+      <!-- Beverages -->
+      <section class="section" id="beverages">
+        <h2 class="section-title">Beverages</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="5">
+            <div class="product-badge">Local Favorite</div>
+            <div class="product-image">
+              <i class="fas fa-coffee"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Green Mountain Coffee</div>
+              <div class="product-description">
+                Freshly ground Vermont coffee
+              </div>
+              <div class="product-price">$8.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="6">
+            <div class="product-image">
+              <i class="fas fa-mug-hot"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Maple Latte</div>
+              <div class="product-description">
+                Freshly made with real maple syrup
+              </div>
+              <div class="product-price">$4.49</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="7">
+            <div class="product-badge">Seasonal</div>
+            <div class="product-image">
+              <i class="fas fa-apple-alt"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Fresh Apple Cider</div>
+              <div class="product-description">
+                Locally pressed, no additives
+              </div>
+              <div class="product-price">$4.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="8">
+            <div class="product-image">
+              <i class="fas fa-glass-whiskey"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Craft Soda</div>
+              <div class="product-description">
+                Locally made with pure cane sugar
+              </div>
+              <div class="product-price">$2.49</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="beverages">
+            Load More Products
+          </button>
+        </div>
+      </section>
+
+      <!-- Beer & Wine -->
+      <section class="section" id="beer-wine">
+        <h2 class="section-title">Beer & Wine</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="9">
+            <div class="product-badge">Local Favorite</div>
+            <div class="product-image">
+              <i class="fas fa-wine-bottle"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Cabernet Franc</div>
+              <div class="product-description">
+                Local red wine with rich flavors
+              </div>
+              <div class="product-price">$16.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="10">
+            <div class="product-image">
+              <i class="fas fa-wine-glass-alt"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Riesling</div>
+              <div class="product-description">
+                Crisp white wine from local vineyards
+              </div>
+              <div class="product-price">$14.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="11">
+            <div class="product-badge">Bestseller</div>
+            <div class="product-image">
+              <i class="fas fa-beer"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Heady Topper IPA</div>
+              <div class="product-description">Vermont's famous double IPA</div>
+              <div class="product-price">$14.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="12">
+            <div class="product-image">
+              <i class="fas fa-glass-whiskey"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Hill Farmstead Saison</div>
+              <div class="product-description">Award-winning farmhouse ale</div>
+              <div class="product-price">$12.99</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="beer-wine">
+            Load More Products
+          </button>
+        </div>
+      </section>
+
+      <!-- Dairy & Refrigerated -->
+      <section class="section" id="dairy">
+        <h2 class="section-title">Dairy & Refrigerated</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="13">
+            <div class="product-badge">Local Favorite</div>
+            <div class="product-image">
+              <i class="fas fa-cheese"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Cheddar</div>
+              <div class="product-description">
+                Aged sharp cheddar from local dairy
+              </div>
+              <div class="product-price">$5.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="14">
+            <div class="product-image">
+              <i class="fas fa-glass-whiskey"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Fresh Milk</div>
+              <div class="product-description">
+                Whole milk from Vermont cows
+              </div>
+              <div class="product-price">$3.49</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="15">
+            <div class="product-badge">Organic</div>
+            <div class="product-image">
+              <i class="fas fa-egg"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Free-Range Eggs</div>
+              <div class="product-description">Dozen eggs from local farms</div>
+              <div class="product-price">$4.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="16">
+            <div class="product-image">
+              <i class="fas fa-cheese"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Maple Smoked Gouda</div>
+              <div class="product-description">
+                Smoky, creamy cheese from local creamery
+              </div>
+              <div class="product-price">$7.99</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="dairy">
+            Load More Products
+          </button>
+        </div>
+      </section>
+
+      <!-- Fresh & Local -->
+      <section class="section" id="fresh">
+        <h2 class="section-title">Fresh & Local</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="17">
+            <div class="product-badge">Seasonal</div>
+            <div class="product-image">
+              <i class="fas fa-apple-alt"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">McIntosh Apples</div>
+              <div class="product-description">Freshly picked local apples</div>
+              <div class="product-price">$1.99/lb</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="18">
+            <div class="product-badge">Organic</div>
+            <div class="product-image">
+              <i class="fas fa-carrot"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Organic Carrots</div>
+              <div class="product-description">Fresh from local farms</div>
+              <div class="product-price">$2.49/lb</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="19">
+            <div class="product-badge">Local Favorite</div>
+            <div class="product-image">
+              <i class="fas fa-lemon"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Honey</div>
+              <div class="product-description">Raw honey from local bees</div>
+              <div class="product-price">$8.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="20">
+            <div class="product-badge">Bestseller</div>
+            <div class="product-image">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Maple Syrup</div>
+              <div class="product-description">
+                Grade A Amber from local sugarbush
+              </div>
+              <div class="product-price">$12.99</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="fresh">
+            Load More Products
+          </button>
+        </div>
+      </section>
+
+      <!-- Household Essentials -->
+      <section class="section" id="household">
+        <h2 class="section-title">Household Essentials</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="21">
+            <div class="product-badge">Eco-Friendly</div>
+            <div class="product-image">
+              <i class="fas fa-soap"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Soap</div>
+              <div class="product-description">Natural, handmade soap</div>
+              <div class="product-price">$5.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="22">
+            <div class="product-image">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Fire Starters</div>
+              <div class="product-description">Eco-friendly fire starters</div>
+              <div class="product-price">$7.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="23">
+            <div class="product-image">
+              <i class="fas fa-battery-full"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Batteries</div>
+              <div class="product-description">
+                AA and AAA batteries available
+              </div>
+              <div class="product-price">$5.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="24">
+            <div class="product-badge">Local Favorite</div>
+            <div class="product-image">
+              <i class="fas fa-tint"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Spring Water</div>
+              <div class="product-description">
+                Pure spring water in reusable bottles
+              </div>
+              <div class="product-price">$2.49</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="household">
+            Load More Products
+          </button>
+        </div>
+      </section>
+
+      <!-- Seasonal Items -->
+      <section class="section" id="seasonal">
+        <h2 class="section-title">Seasonal Items</h2>
+        <div class="product-grid">
+          <div class="product-card" data-product-id="25">
+            <div class="product-badge">Handmade</div>
+            <div class="product-image">
+              <i class="fas fa-mitten"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Vermont Mittens</div>
+              <div class="product-description">Hand-knit wool mittens</div>
+              <div class="product-price">$24.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="26">
+            <div class="product-badge">Seasonal</div>
+            <div class="product-image">
+              <i class="fas fa-snowman"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Holiday Decorations</div>
+              <div class="product-description">
+                Festive decorations for all seasons
+              </div>
+              <div class="product-price">$9.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="27">
+            <div class="product-image">
+              <i class="fas fa-campground"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Firewood Bundles</div>
+              <div class="product-description">
+                Seasoned firewood for cozy nights
+              </div>
+              <div class="product-price">$7.99</div>
+            </div>
+          </div>
+          <div class="product-card" data-product-id="28">
+            <div class="product-badge">Summer Essential</div>
+            <div class="product-image">
+              <i class="fas fa-sun"></i>
+            </div>
+            <div class="product-info">
+              <div class="product-name">Sunscreen</div>
+              <div class="product-description">
+                SPF 30 for summer protection
+              </div>
+              <div class="product-price">$8.99</div>
+            </div>
+          </div>
+        </div>
+        <div class="load-more-container">
+          <button class="load-more-btn" data-section="seasonal">
+            Load More Products
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>About Us</h3>
+            <p>
+              Family-owned and operated since 1985, Maple Street General Store
+              has been serving our community with quality products and friendly
+              service.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#specials">Specials</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Store Hours</h3>
+            <ul>
+              <li>Monday - Friday: 6am - 10pm</li>
+              <li>Saturday: 7am - 11pm</li>
+              <li>Sunday: 7am - 11pm</li>
+              <li>Holidays: 8am - 8pm</li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 123 Maple Street,
+                Burlington, VT 05401
+              </li>
+              <li><i class="fas fa-phone"></i> (802) 555-0123</li>
+              <li><i class="fas fa-envelope"></i> maplestore@example.com</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Maple Street General Store. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Product Details</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image" id="modalImage">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="modal-details">
+            <p class="modal-description" id="modalDescription">
+              Product description goes here.
+            </p>
+            <div class="modal-price" id="modalPrice">$0.00</div>
+            <div class="modal-actions">
+              <button class="modal-btn btn-primary" id="addToCartBtn">
+                Add to Cart
+              </button>
+              <button class="modal-btn btn-secondary" id="closeModalBtn">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="notification" id="notification">
+      <i class="fas fa-check-circle"></i>
+      <span id="notificationText">Product added to cart!</span>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobileMenuToggle")
+        .addEventListener("click", function () {
+          document.getElementById("mainNav").classList.toggle("active");
+        });
+
+      // Dropdown menu for mobile
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.addEventListener("click", function (e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            this.classList.toggle("active");
+          }
+        });
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Close mobile menu if open
+          document.getElementById("mainNav").classList.remove("active");
+
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add active class to navigation based on scroll position
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav ul li a");
+
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").slice(1) === current) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Product Modal
+      const modal = document.getElementById("productModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalImage = document.getElementById("modalImage");
+      const modalDescription = document.getElementById("modalDescription");
+      const modalPrice = document.getElementById("modalPrice");
+      const addToCartBtn = document.getElementById("addToCartBtn");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const closeBtn = document.querySelector(".close");
+      const notification = document.getElementById("notification");
+      const notificationText = document.getElementById("notificationText");
+
+      // Product data
+      const productData = {
+        1: {
+          name: "Vermont Maple Cookies",
+          description:
+            "Locally made cookies with real maple syrup. These delicious cookies are baked fresh daily in our Vermont bakery using only the finest ingredients. Each batch is made with pure Vermont maple syrup, giving them a unique flavor that can't be found anywhere else. Perfect with a cup of coffee or as a sweet treat any time of day.",
+          price: "$3.99",
+          icon: "fas fa-cookie-bite",
+        },
+        2: {
+          name: "Maple Candy",
+          description:
+            "Pure Vermont maple syrup candy. Made from 100% pure Vermont maple syrup, these candies are a true taste of New England. Each piece is carefully crafted to deliver the perfect balance of sweetness and maple flavor. A favorite among locals and visitors alike.",
+          price: "$5.49",
+          icon: "fas fa-candy-cane",
+        },
+        3: {
+          name: "Organic Trail Mix",
+          description:
+            "Nuts, seeds, and dried fruits. Our organic trail mix is the perfect snack for hiking, work, or school. Made with certified organic ingredients including almonds, walnuts, pumpkin seeds, dried cranberries, and dark chocolate chips. No added sugars or preservatives.",
+          price: "$4.99",
+          icon: "fas fa-seedling",
+        },
+        4: {
+          name: "Ben & Jerry's Ice Cream",
+          description:
+            "Local favorite ice cream pints. Founded in Vermont, Ben & Jerry's is known for its chunky, funky ice cream flavors. We carry all the classics like Chocolate Fudge Brownie, Cherry Garcia, and Phish Food, as well as seasonal flavors that change throughout the year.",
+          price: "$5.99",
+          icon: "fas fa-ice-cream",
+        },
+        5: {
+          name: "Green Mountain Coffee",
+          description:
+            "Freshly ground Vermont coffee. Our signature blend is made from 100% Arabica beans sourced from sustainable farms around the world and roasted right here in Vermont. With notes of chocolate and caramel, it's the perfect way to start your day.",
+          price: "$8.99",
+          icon: "fas fa-coffee",
+        },
+        6: {
+          name: "Maple Latte",
+          description:
+            "Freshly made with real maple syrup. Our signature latte combines espresso with steamed milk and a touch of pure Vermont maple syrup. Topped with a sprinkle of cinnamon, it's the perfect drink for a cold Vermont morning.",
+          price: "$4.49",
+          icon: "fas fa-mug-hot",
+        },
+        7: {
+          name: "Fresh Apple Cider",
+          description:
+            "Locally pressed, no additives. Our apple cider is pressed fresh daily from apples grown in Vermont orchards. With no added sugars or preservatives, it's the pure taste of fall in every sip. Available cold or hot with a cinnamon stick.",
+          price: "$4.99",
+          icon: "fas fa-apple-alt",
+        },
+        8: {
+          name: "Vermont Craft Soda",
+          description:
+            "Locally made with pure cane sugar. Our craft sodas are made in small batches using traditional methods and the finest ingredients. Flavors include Birch Beer, Root Beer, Cream Soda, and seasonal varieties like Pumpkin Spice in the fall.",
+          price: "$2.49",
+          icon: "fas fa-glass-whiskey",
+        },
+        9: {
+          name: "Vermont Cabernet Franc",
+          description:
+            "Local red wine with rich flavors. This Cabernet Franc is grown in the fertile soils of Vermont and aged in French oak barrels. With notes of black cherry, plum, and a hint of spice, it pairs perfectly with grilled meats and hearty stews.",
+          price: "$16.99",
+          icon: "fas fa-wine-bottle",
+        },
+        10: {
+          name: "Vermont Riesling",
+          description:
+            "Crisp white wine from local vineyards. Our Riesling is made from grapes grown in the cool climate of Vermont, resulting in a wine with bright acidity and flavors of green apple, citrus, and mineral notes. Perfect with seafood or spicy dishes.",
+          price: "$14.99",
+          icon: "fas fa-wine-glass-alt",
+        },
+        11: {
+          name: "Heady Topper IPA",
+          description:
+            "Vermont's famous double IPA. Brewed by The Alchemist in Stowe, Vermont, Heady Topper is consistently rated one of the best IPAs in the world. With intense hop flavors and aromas of citrus and pine, it's a must-try for craft beer enthusiasts.",
+          price: "$14.99",
+          icon: "fas fa-beer",
+        },
+        12: {
+          name: "Hill Farmstead Saison",
+          description:
+            "Award-winning farmhouse ale. From the acclaimed Hill Farmstead Brewery, this Saison is dry, complex, and refreshing. With notes of fruit, spice, and earth, it's the perfect beer for warm weather or pairing with a variety of foods.",
+          price: "$12.99",
+          icon: "fas fa-glass-whiskey",
+        },
+        13: {
+          name: "Vermont Cheddar",
+          description:
+            "Aged sharp cheddar from local dairy. Our Vermont cheddar is aged for at least two years, resulting in a complex flavor with notes of caramel and nuts. Perfect for cheese boards, sandwiches, or melting over your favorite dishes.",
+          price: "$5.99",
+          icon: "fas fa-cheese",
+        },
+        14: {
+          name: "Fresh Milk",
+          description:
+            "Whole milk from Vermont cows. Our milk comes from small family farms in Vermont where cows are pasture-raised and treated with care. It's pasteurized but not homogenized, so you'll find cream on top that you can stir in for a richer taste.",
+          price: "$3.49",
+          icon: "fas fa-glass-whiskey",
+        },
+        15: {
+          name: "Free-Range Eggs",
+          description:
+            "Dozen eggs from local farms. Our eggs come from chickens that are free to roam outdoors and eat a natural diet. The result is eggs with rich, flavorful yolks and superior nutritional content. Perfect for breakfast, baking, or any recipe that calls for eggs.",
+          price: "$4.99",
+          icon: "fas fa-egg",
+        },
+        16: {
+          name: "Maple Smoked Gouda",
+          description:
+            "Smoky, creamy cheese from local creamery. This unique gouda is cold-smoked over maple wood chips, giving it a distinctive smoky flavor that complements its creamy texture. Try it melted on burgers or paired with apples and crackers.",
+          price: "$7.99",
+          icon: "fas fa-cheese",
+        },
+        17: {
+          name: "McIntosh Apples",
+          description:
+            "Freshly picked local apples. McIntosh apples are a Vermont favorite, known for their crisp texture and tangy-sweet flavor. Perfect for eating fresh, baking into pies, or pressing into cider. Available in season from local orchards.",
+          price: "$1.99/lb",
+          icon: "fas fa-apple-alt",
+        },
+        18: {
+          name: "Organic Carrots",
+          description:
+            "Fresh from local farms. Our organic carrots are grown without synthetic pesticides or fertilizers. They're sweet, crisp, and perfect for snacking, roasting, or adding to soups and stews. Available with or without the green tops.",
+          price: "$2.49/lb",
+          icon: "fas fa-carrot",
+        },
+        19: {
+          name: "Vermont Honey",
+          description:
+            "Raw honey from local bees. Our honey is harvested from hives located in wildflower meadows across Vermont. It's raw and unfiltered, retaining all the natural enzymes and pollen that make honey a healthy sweetener. Each jar has a unique flavor profile based on the season and location.",
+          price: "$8.99",
+          icon: "fas fa-lemon",
+        },
+        20: {
+          name: "Maple Syrup",
+          description:
+            "Grade A Amber from local sugarbush. Our maple syrup is produced by local sugarmakers who tap maple trees in late winter and boil the sap into syrup. It's Grade A Amber, with a rich maple flavor that's perfect for pancakes, waffles, or as a natural sweetener in recipes.",
+          price: "$12.99",
+          icon: "fas fa-seedling",
+        },
+        21: {
+          name: "Vermont Soap",
+          description:
+            "Natural, handmade soap. Our soap is made in small batches using the cold process method. It contains olive oil, coconut oil, and Vermont goat milk for a moisturizing bar that cleanses without stripping your skin of natural oils. Scented with essential oils like lavender, citrus, and cedar.",
+          price: "$5.99",
+          icon: "fas fa-soap",
+        },
+        22: {
+          name: "Fire Starters",
+          description:
+            "Eco-friendly fire starters. Our fire starters are made from recycled materials and wax, making them an environmentally friendly way to start your fireplace, wood stove, or campfire. They burn for 8-10 minutes, giving you plenty of time to get your fire going.",
+          price: "$7.99",
+          icon: "fas fa-fire",
+        },
+        23: {
+          name: "Batteries",
+          description:
+            "AA and AAA batteries available. We carry a full range of batteries for all your needs, from AA and AAA for remotes and toys, to 9V for smoke detectors, to specialty batteries for hearing aids and watches. All from trusted brands like Duracell and Energizer.",
+          price: "$5.99",
+          icon: "fas fa-battery-full",
+        },
+        24: {
+          name: "Vermont Spring Water",
+          description:
+            "Pure spring water in reusable bottles. Our water comes from a protected spring deep in the Green Mountains. It's naturally filtered through layers of rock, resulting in pure, crisp water with a balanced mineral content. Sold in reusable glass bottles to reduce plastic waste.",
+          price: "$2.49",
+          icon: "fas fa-tint",
+        },
+        25: {
+          name: "Vermont Mittens",
+          description:
+            "Hand-knit wool mittens. These warm mittens are hand-knit by local artisans using 100% wool yarn. They're lined with fleece for extra warmth and comfort, and the ribbed cuffs keep cold air out. Available in a variety of colors and patterns.",
+          price: "$24.99",
+          icon: "fas fa-mitten",
+        },
+        26: {
+          name: "Holiday Decorations",
+          description:
+            "Festive decorations for all seasons. We carry a wide range of decorations for holidays throughout the year, including Christmas ornaments, Halloween decorations, Easter baskets, and more. Many are made by local artisans using natural materials.",
+          price: "$9.99",
+          icon: "fas fa-snowman",
+        },
+        27: {
+          name: "Firewood Bundles",
+          description:
+            "Seasoned firewood for cozy nights. Our firewood is seasoned for at least six months to ensure it burns cleanly and efficiently. Each bundle contains a mix of hardwoods like oak, maple, and birch that provide long-lasting heat for your fireplace or wood stove.",
+          price: "$7.99",
+          icon: "fas fa-campground",
+        },
+        28: {
+          name: "Sunscreen",
+          description:
+            "SPF 30 for summer protection. Our sunscreen provides broad-spectrum protection against UVA and UVB rays. It's water-resistant for up to 80 minutes and made with natural ingredients like zinc oxide and green tea extract. Perfect for a day at the lake or hiking in the mountains.",
+          price: "$8.99",
+          icon: "fas fa-sun",
+        },
+      };
+
+      // Additional products for loading more
+      const additionalProducts = {
+        snacks: [
+          {
+            id: 101,
+            name: "Vermont Beef Jerky",
+            description: "Locally made, all natural jerky",
+            price: "$7.99",
+            icon: "fas fa-bacon",
+          },
+          {
+            id: 102,
+            name: "Maple Granola Bars",
+            description: "Healthy snack with Vermont maple",
+            price: "$3.49",
+            icon: "fas fa-bread-slice",
+          },
+          {
+            id: 103,
+            name: "Oreo Cookies",
+            description: "Classic chocolate sandwich cookies",
+            price: "$4.29",
+            icon: "fas fa-cookie",
+          },
+          {
+            id: 104,
+            name: "Vermont Hot Sauce",
+            description: "Locally made with a perfect kick",
+            price: "$6.99",
+            icon: "fas fa-pepper-hot",
+          },
+        ],
+        beverages: [
+          {
+            id: 105,
+            name: "Maple Water",
+            description: "Naturally hydrating maple sap water",
+            price: "$3.99",
+            icon: "fas fa-wine-bottle",
+          },
+          {
+            id: 106,
+            name: "Fresh Smoothies",
+            description: "Made with local fruits and yogurt",
+            price: "$5.99",
+            icon: "fas fa-blender",
+          },
+          {
+            id: 107,
+            name: "Organic Juices",
+            description: "100% pure fruit juices",
+            price: "$3.99",
+            icon: "fas fa-glass-cheers",
+          },
+          {
+            id: 108,
+            name: "Hot Chocolate",
+            description: "Rich and creamy with Vermont milk",
+            price: "$3.49",
+            icon: "fas fa-mug-hot",
+          },
+        ],
+        "beer-wine": [
+          {
+            id: 109,
+            name: "Vermont Ice Cider",
+            description: "Sweet dessert wine from local apples",
+            price: "$24.99",
+            icon: "fas fa-wine-bottle",
+          },
+          {
+            id: 110,
+            name: "Magic Hat #9",
+            description: "Fruit-infused pale ale",
+            price: "$9.99",
+            icon: "fas fa-beer",
+          },
+          {
+            id: 111,
+            name: "Shelburne Vineyard Pinot Noir",
+            description: "Elegant red wine from local grapes",
+            price: "$18.99",
+            icon: "fas fa-wine-bottle",
+          },
+          {
+            id: 112,
+            name: "Long Trail Ale",
+            description: "Smooth and drinkable Vermont classic",
+            price: "$8.99",
+            icon: "fas fa-beer",
+          },
+        ],
+        dairy: [
+          {
+            id: 113,
+            name: "Vermont Butter",
+            description: "Creamy, rich butter from local dairy",
+            price: "$4.49",
+            icon: "fas fa-ice-cream",
+          },
+          {
+            id: 114,
+            name: "Goat Cheese",
+            description: "Fresh and tangy local goat cheese",
+            price: "$6.99",
+            icon: "fas fa-cheese",
+          },
+          {
+            id: 115,
+            name: "Greek Yogurt",
+            description: "Creamy, protein-rich yogurt",
+            price: "$4.99",
+            icon: "fas fa-glass-whiskey",
+          },
+          {
+            id: 116,
+            name: "Blue Cheese",
+            description: "Bold and tangy Vermont blue cheese",
+            price: "$8.99",
+            icon: "fas fa-cheese",
+          },
+        ],
+        fresh: [
+          {
+            id: 117,
+            name: "Bell Peppers",
+            description: "Colorful, crisp local peppers",
+            price: "$2.99/lb",
+            icon: "fas fa-pepper-hot",
+          },
+          {
+            id: 118,
+            name: "Fresh Lettuce",
+            description: "Crisp lettuce from local greenhouse",
+            price: "$2.49/head",
+            icon: "fas fa-leaf",
+          },
+          {
+            id: 119,
+            name: "Artisan Sourdough",
+            description: "Freshly baked local bread",
+            price: "$5.49",
+            icon: "fas fa-bread-slice",
+          },
+          {
+            id: 120,
+            name: "Farm Fresh Eggs",
+            description: "Free-range eggs from happy chickens",
+            price: "$4.99/dozen",
+            icon: "fas fa-egg",
+          },
+        ],
+        household: [
+          {
+            id: 121,
+            name: "LED Light Bulbs",
+            description: "Energy efficient lighting",
+            price: "$6.99",
+            icon: "fas fa-lightbulb",
+          },
+          {
+            id: 122,
+            name: "Eco Cleaning Supplies",
+            description: "Environmentally friendly cleaners",
+            price: "$4.99",
+            icon: "fas fa-broom",
+          },
+          {
+            id: 123,
+            name: "Recycled Paper Products",
+            description: "Toilet paper and paper towels",
+            price: "$8.99",
+            icon: "fas fa-paper-roll",
+          },
+          {
+            id: 124,
+            name: "Ice Melt",
+            description: "Pet-safe ice melt for winter",
+            price: "$12.99",
+            icon: "fas fa-snowflake",
+          },
+        ],
+        seasonal: [
+          {
+            id: 125,
+            name: "Local Pumpkins",
+            description: "Perfect for carving or pies",
+            price: "$5.99",
+            icon: "fas fa-pumpkin-alt",
+          },
+          {
+            id: 126,
+            name: "Ice Scraper",
+            description: "Heavy-duty ice scraper for winter",
+            price: "$6.99",
+            icon: "fas fa-snowflake",
+          },
+          {
+            id: 127,
+            name: "Portable Fan",
+            description: "Battery-operated fan for summer",
+            price: "$12.99",
+            icon: "fas fa-fan",
+          },
+          {
+            id: 128,
+            name: "Beach Towels",
+            description: "Colorful towels for summer fun",
+            price: "$9.99",
+            icon: "fas fa-umbrella-beach",
+          },
+        ],
+      };
+
+      // Open modal when product card is clicked
+      document.querySelectorAll(".product-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          const productId = this.getAttribute("data-product-id");
+          const product = productData[productId];
+
+          if (product) {
+            modalTitle.textContent = product.name;
+            modalImage.innerHTML = `<i class="${product.icon}" style="font-size: 5rem; color: var(--primary-color);"></i>`;
+            modalDescription.textContent = product.description;
+            modalPrice.textContent = product.price;
+
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+          }
+        });
+      });
+
+      // Close modal when close button is clicked
+      closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      // Close modal when close button in modal is clicked
+      closeModalBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      // Close modal when clicking outside of it
+      window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      addToCartBtn.addEventListener("click", function () {
+        const productName = modalTitle.textContent;
+
+        notificationText.textContent = `${productName} added to cart!`;
+        notification.classList.add("show");
+
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 3000);
+
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      document.querySelectorAll(".load-more-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const section = this.getAttribute("data-section");
+          const productGrid = document.querySelector(
+            `#${section} .product-grid`
+          );
+
+          this.classList.add("loading");
+          this.textContent = "Loading...";
+
+          setTimeout(() => {
+            additionalProducts[section].forEach((product) => {
+              const productCard = document.createElement("div");
+              productCard.className = "product-card";
+              productCard.setAttribute("data-product-id", product.id);
+
+              productCard.innerHTML = `
+                            <div class="product-image">
+                                <i class="${product.icon}"></i>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">${product.name}</div>
+                                <div class="product-description">${product.description}</div>
+                                <div class="product-price">${product.price}</div>
+                            </div>
+                        `;
+
+              productCard.addEventListener("click", function () {
+                modalTitle.textContent = product.name;
+                modalImage.innerHTML = `<i class="${product.icon}" style="font-size: 5rem; color: var(--primary-color);"></i>`;
+                modalDescription.textContent = product.description;
+                modalPrice.textContent = product.price;
+
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden";
+              });
+
+              productGrid.appendChild(productCard);
+            });
+
+            this.classList.remove("loading");
+            this.textContent = "All Products Loaded";
+            this.disabled = true;
+            this.style.opacity = "0.6";
+            this.style.cursor = "not-allowed";
+          }, 1000);
+        });
+      });
+
+      const sections = document.querySelectorAll(".section");
+      const loadMoreButtons = document.querySelectorAll(".load-more-btn");
+
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+
+            const sectionId = entry.target.id;
+            const loadMoreBtn = document.querySelector(
+              `.load-more-btn[data-section="${sectionId}"]`
+            );
+
+            if (loadMoreBtn && !loadMoreBtn.disabled) {
+            }
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
